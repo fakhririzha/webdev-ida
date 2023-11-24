@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "target": "ES6",
+        "module": "esnext",
+        "allowSyntheticDefaultImports": true,
+        "paths": {
+            "@appConfig": ["app.config.js"],
+            "@frontendImages/*": ["public/static/img/*"],
+            "@backendImages/*": ["public/backend/img/*"],
+            "@config/*": ["core/config/*"],
+            "@css/*": ["core/css/*"],
+            "@commons/*": ["core/common/*"],
+            "@modules/*": ["core/modules/*"],
+            "@helpers/*": ["core/helpers/*"],
+            "@backendComponents/*": ["core/modules/backend/*"],
+            "@frontendComponents/*": ["core/modules/frontend/*"],
+            "@backendLayout": ["core/modules/backend/theme/layout/index.js"],
+            "@frontendLayout": ["core/modules/frontend/theme/layout/index.js"]
+        }
+    },
+    "exclude": ["node_modules"]
+}
