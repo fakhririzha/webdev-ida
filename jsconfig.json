@@ -13,8 +13,7 @@
             "@commons/*": ["core/common/*"],
             "@modules/*": ["core/modules/*"],
             "@helpers/*": ["core/helpers/*"],
-            "@backendComponents/*": ["core/modules/backend/*"],
-            "@frontendComponents/*": ["core/modules/frontend/*"],
+            "@frontendComponents/*": ["core/modules/*"],
             "@backendLayout": ["core/modules/backend/theme/layout/index.js"],
             "@frontendLayout": ["core/modules/frontend/theme/layout/index.js"]
         }

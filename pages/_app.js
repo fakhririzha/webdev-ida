@@ -1,4 +1,5 @@
 import '@css/globals.css';
+import '@css/tailwind.css';
 import Head from 'next/head';
 import * as React from 'react';
 
