@@ -3,8 +3,12 @@
 const express = require('express');
 const next = require('next');
 
-const hostname = 'localhost';
-const port = 3000;
+const MongoDBConnection = require('./core/lib/db');
+
+MongoDBConnection();
+
+const hostname = process.env.HOSTNAME;
+const port = process.env.PORT;
 
 const app = next({
     dev: process.env.NODE_ENV !== 'production',
@@ -12,20 +16,25 @@ const app = next({
     port,
 });
 const handle = app.getRequestHandler();
-const { json } = express;
+const { json, urlencoded } = express;
 
 // Import API Modules
-// const API_NAME = require('./path/to/api/folder');
+const POST_ACTIVITY = require('./api/activity/post');
+const PUT_ACTIVITY = require('./api/activity/put');
+const DELETE_ACTIVITY = require('./api/activity/delete');
 
 app.prepare().then(() => {
     const server = express();
 
     server.use(json({ limit: '10MB' }));
+    server.use(urlencoded({ extended: false }));
 
     server.get('*', (req, res) => handle(req, res));
 
-    // Define the API routes here
-    // server.post('/routes/to/api', API_NAME);
+    // Define the API routes for activity
+    server.post('/api/activity', POST_ACTIVITY);
+    server.put('/api/activity/:id', PUT_ACTIVITY);
+    server.delete('/api/activity/:id', DELETE_ACTIVITY);
 
     server.listen(port, (err) => {
         if (err) throw err;
